@@ -7,4 +7,8 @@ exports.routes = (app) => {
   app.route("/").get((req, res) => {
     res.send("App is working");
   });
+
+  app.route("/getFlights").post(async (req, res) => {
+    res.send(await services.getFlights());
+  });
 };

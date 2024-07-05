@@ -5,6 +5,7 @@ const { generateFlightNumber } = require("./generateFlightNumber");
 const { generateFlightType } = require("./generateFlightType");
 const { generateNewFlight } = require("./generateNewFlight");
 const { generateStatus } = require("./generateStatus");
+const { getFlights } = require("./getFlights");
 
 module.exports={
     generateNewFlight,
@@ -13,5 +14,6 @@ module.exports={
     generateFlightNumber,
     generateStatus,
     generateFlightType,
-    generateAirport
+    generateAirport,
+    getFlights
 }
