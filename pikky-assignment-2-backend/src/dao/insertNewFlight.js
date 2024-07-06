@@ -9,11 +9,11 @@ async function insertNewFlight(flight) {
     // Insert the flight into the database
     const result = await flights.insertOne(flight);
 
-    await client.close();
+    // await client.close();
     return result.insertedId;
   } catch (err) {
     console.log(err)
-    await client.close();
+    // await client.close();
     return err;
   }
 }

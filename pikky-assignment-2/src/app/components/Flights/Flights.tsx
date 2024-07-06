@@ -8,21 +8,23 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useEffect, useState } from "react";
-
+import Flight from "../utilities/Flight";
 export default function Flights() {
-    let [flights, setFlights]=useState<any>();
+    let [flights, setFlights]=useState<any>([]);
     useEffect(()=>{
-        services.getFlights().then((res)=>{
-            setFlights(res)
-        })
-    }, [])
+        setInterval(()=>{
+          services.getFlights().then((res)=>{
+            setFlights(res.reverse())
+          })
+        }, 2000)
+    },[])
   return (
     <div>
       <Table>
         <TableCaption>Real-Time Flight Tracker Dashboard</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead >Flight Number</TableHead>
+            <TableHead>Flight Number</TableHead>
             <TableHead>Origin</TableHead>
             <TableHead>Destination</TableHead>
             <TableHead >Departure</TableHead>
@@ -31,7 +33,7 @@ export default function Flights() {
             <TableHead>Status</TableHead>
           </TableRow>
         </TableHeader>
-        
+        <Flight flights={flights}></Flight>
       </Table>
     </div>
   );

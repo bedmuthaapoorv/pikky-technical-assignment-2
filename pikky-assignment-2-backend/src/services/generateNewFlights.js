@@ -6,7 +6,9 @@ async function generateNewFlights(){
                 console.log('new flight added')
             }
         )
-    }, 2000)
+    }, 5000)
     
 }
-generateNewFlights()
+module.exports={
+    generateNewFlights
+}
