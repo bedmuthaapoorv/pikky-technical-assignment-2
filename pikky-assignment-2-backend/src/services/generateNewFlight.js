@@ -13,13 +13,9 @@ async function generateNewFlight() {
       flightType: services.generateFlightType(),
       status: services.generateStatus(),
     };
-
     let response = daos.insertNewFlight(flight);
-
     return response;
   } catch (err) {
-    console.log(err);
-
     return err;
   }
 }

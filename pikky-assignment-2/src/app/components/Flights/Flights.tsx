@@ -19,6 +19,11 @@ export default function Flights() {
   let [flightType, setFlightType] = useState<any>("");
   let [status, setStatus] = useState<any>("");
   let [updateData, setUpdateData] = useState<any>(true);
+  useEffect(()=>{
+    setInterval(()=>{
+      setUpdateData(!updateData)
+    }, 5000)
+  }, [])
   useEffect(() => {
     services.getFlights().then((res) => {
       let newArray: Array<any> = [];
@@ -35,8 +40,6 @@ export default function Flights() {
           flight.flightType.toLowerCase().includes(flightType.toLowerCase()) &&
           flight.status.toLowerCase().includes(status.toLowerCase())
         ) {
-          console.log(origin);
-
           newArray.push(flight);
         }
       }
@@ -45,7 +48,6 @@ export default function Flights() {
   }, [updateData]);
 
   useEffect(() => {
-    console.log(origin);
     updateData?
     services.getFlights().then((res) => {
       let newArray: Array<any> = [];
@@ -69,9 +71,7 @@ export default function Flights() {
     }) :''
   }, [origin, flightNumber, destination, airline, flightType, status]);
 
-  setTimeout(()=>{
-    setUpdateData(true)
-  }, 5000)
+  
   let filters = {
     "Flight number": {
       options: [],
@@ -122,11 +122,7 @@ export default function Flights() {
       setter: setStatus,
     },
   };
-  useEffect(() => {
-    let newFlights = [];
-    for (let flight of flights) {
-    }
-  }, [flightNumber, origin, destination, airline, flightType, status]);
+
   return (
     <div>
       <Filters filters={filters}></Filters>
