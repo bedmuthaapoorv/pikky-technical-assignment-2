@@ -1,12 +1,12 @@
 let generateNewFlight=require('../services/generateNewFlight')
 async function generateNewFlights(){
-    setInterval(()=>{
+    //setInterval(()=>{
         generateNewFlight.generateNewFlight().then(
             ()=>{
                 console.log('new flight added')
             }
         )
-    }, 5000)
+    // }, 5000)
     
 }
 module.exports={
